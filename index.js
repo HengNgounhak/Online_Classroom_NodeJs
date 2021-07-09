@@ -10,7 +10,7 @@ const secret = "1234567890";
 const User = require('./Models/User')
 
 const app = express()
-const port = 4000
+const port = process.env.PORT || 4000
 const routes = require('./Routes/admin')
 
 app.use(cors()) //allow this port open security for other
