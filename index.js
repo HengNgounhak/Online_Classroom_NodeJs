@@ -16,13 +16,9 @@ const routes = require('./Routes/admin')
 app.use(cors()) //allow this port open security for other
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public/fileUpload')));
+app.use(express.static(path.join(__dirname, '../public/fileUpload')));
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'public/fileUpload')));
-    app.use(express.static(path.join(__dirname, '../public/fileUpload')));
-
-    app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
-}
 app.use(cookieParser());
 app.use(session({
     cookie: {
